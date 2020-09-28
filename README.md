@@ -12,14 +12,14 @@
 The tutorial is organized in 3 parts:
 
 1. [Application architecture](tutorial-frontend-backend/tutorial-arhitectura.md)
-2. [Buidling the RESTful API using ExpressJS](tutorial-frontend-backend/tutorial-rest-api.md)
+2. [Building the RESTful API using ExpressJS](tutorial-frontend-backend/tutorial-rest-api.md)
 3. [Building the interface using HTML and JavaScript](tutorial-frontend-backend/tutorial-frontend.md)
 
 Following this tutorial will require you to have basic skills in working with the console, understanding relational databases, have basic programming knowledge \(Object Orienting Programming, Algorithms, Data Structures\).
 
 ## Progressive Web App \(PWA\) with React and NodeJS backend
 
-[https://github.com/webtech-superheroes/webtech-hub](https://github.com/webtech-superheroes/webtech-hub)
+We will debug and analyze a real world application available here [https://github.com/webtech-superheroes/webtech-hub](https://github.com/webtech-superheroes/webtech-hub)
 
 ## Data operations and persistence
 
