@@ -31,7 +31,7 @@ If everything went well a _**pagckage.json**_ file is generated
 * [ ] TODO: check if the package.json exists
 * [ ] TODO: create a new file called _**server.js**_
 
-## 2. Cum construiesc un server HTTP folosind ExpressJS?
+## 2. How to build a HTTP server using ExpressJS?
 
 ExpressJS is a lightweight, but powerful framework for building web applications or web services.
 
