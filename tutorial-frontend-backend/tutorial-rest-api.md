@@ -71,7 +71,7 @@ app.listen(8080)
 * [ ] TODO: adaugă în directorul creat un fișier `index.html`
 * [ ] TODO: deschide în browser aplicația accesând adresa URL \([http://ip:8080](http://ip:8080)\)
 
-## 3. Cum instalez MySQL și cum creez baza de date?
+## 3. How to install MySQL and create the database?
 
 If you havent done this allready, follow the tutorial published [here](../development-environment/mysql.md).
 
@@ -82,7 +82,7 @@ create database profile;
 ```
 
 * [ ] TODO: check if the database was created by executing `show databases;`
-* [ ] TODO: exit the mysql console by typing `exit` and pressing enter
+* [ ] TODO: exit the console by typing `exit` and pressing enter
 
 ## 4. Cum mă conectez la baza de date din NodeJS folosind Sequelize?
 
