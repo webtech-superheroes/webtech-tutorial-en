@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Message list</title>
+    </head>
+    <body>
+        <h1>Messages</h1>
+
+        <!-- initial table structure
+        <table style="width:500px;">
+                <tr>
+                    <th>ID</th>
+                    <th>Subject</th>
+                    <th>Name</th> 
+                    <th>Message</th>
+                    <th>Actions</th>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Subject data</td>
+                    <td>Name data</td>
+                    <td>Message data</td>
+                    <td>
+                        <button>Edit</button>
+                        <button>Delete</button>
+                    </td>
+                </tr>
+        </table>
+        -->
+
+        <form onSubmit="saveMessage(event)">
+                <input type="hidden" name="id" id="id" /><br />
+                Name:<br />
+                <input type="text" name="name" id="name" /><br />
+                Subject:<br />
+                <input type="text" name="subject" id="subject"><br/>
+                Message:<br />
+                <textarea name="message" id="message"></textarea> <br/>
+                <input type="submit" value="Save message">
+                <input type="reset" value="Cancel">
+        </form>
+    
+
+        <div id="table"></div>
+
+        
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+        <script 
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+        
+        <script type="text/javascript">
+            function showMessages() {
+                axios.get('/messages').then(function(results) {
+                    
+                    let html = ` <table style="width:500px;">
+                            <tr>
+                                <th>ID</th>
+                                <th>Subject</th>
+                                <th>Name</th> 
+                                <th>Message</th>
+                                <th>Actions</th>
+                            </tr>`
+                    
+                    results.data.forEach(function(element) {
+                        html += `<tr>
+                                    <td>${element.id}</td>
+                                    <td>${element.name}</td>
+                                    <td>${element.subject}</td>
+                                    <td>${element.message}</td>
+                                    <td>
+                                        <button onClick="editMessage(${element.id})">Edit</button>
+                                        <button onClick="deleteMessage(${element.id})">Delete</button>
+                                    </td>
+                                </tr>`
+                    })
+
+                    html += `</table>`
+                    
+                    $('#table').html(html)
+                }).catch(function(error) {
+                    console.log(error)
+                })
+            }
+
+            function saveMessage(event) {
+                event.preventDefault()
+                
+                
+                
+                //get values from fields
+                let id = $('#id').val()
+                let name = $('#name').val()
+                let subject = $('#subject').val()
+                let message = $('#message').val()
+                
+                if(id) {
+                    axios.put('/messages/'+id, {
+                        name: name,
+                        subject: subject,
+                        message: message
+                    }).then(function(result) {
+                        showMessages()
+                        $(event.target).trigger("reset")
+                    }).catch(function(err) {
+                        alert('Resource could not be saved')
+                    })
+                } else {
+                    //make a request to POST /messages
+                    axios.post('/messages', {
+                        name: name,
+                        subject: subject,
+                        message: message
+                    }).then(function(result) {
+                        showMessages()
+                        $(event.target).trigger("reset")
+                    }).catch(function(err) {
+                        alert('Resource could not be saved')
+                    })
+                }
+            }
+
+            function editMessage(id) {
+                //get the values from the server
+                axios.get('/messages/'+id).then(function(result) {
+                    //display values in the form
+                    $('#id').val(result.data.id)
+                    $('#name').val(result.data.name)
+                    $('#subject').val(result.data.subject)
+                    $('#message').val(result.data.message) 
+                }).catch(function(err) {
+                    console.log(err)
+                    alert('Could not find resource')
+                })
+            }
+
+            function deleteMessage(id) {
+                axios.delete('/messages/'+id).then(function(result) {
+                    showMessages()
+                }).catch(function(err) {
+                    alert('Resource could not delete resource')
+                }) 
+            }
+
+            $(document).ready(function() {
+                console.log('Hello from JQuery')
+                showMessages()
+            })
+        </script>    
+    </body>
+</html>
