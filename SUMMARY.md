@@ -2,12 +2,12 @@
 
 * [Home](README.md)
 
-## Configurare mediu de lucru
+## Configurare mediu de lucru <a id="development-environment"></a>
 
-* [Local](configurare-mediu-de-lucru/local.md)
-* [Cloud9](configurare-mediu-de-lucru/c9.md)
-* [MySQL](configurare-mediu-de-lucru/mysql.md)
-* [Working with GIT](configurare-mediu-de-lucru/git.md)
+* [Local](development-environment/local.md)
+* [Cloud9](development-environment/c9.md)
+* [MySQL](development-environment/mysql.md)
+* [Working with GIT](development-environment/git.md)
 
 ## Tutorial frontend-backend
 

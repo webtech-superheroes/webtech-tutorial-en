@@ -77,7 +77,7 @@ Pentru a rula programul deschid fisierul `server.js` și apăs butonul RUN
 
 ## 3. Cum instalez MySQL și cum creez baza de date?
 
-Detaliile pentru a configura MySQL în Cloud9 sunt dispoibile [aici](../configurare-mediu-de-lucru/mysql.md).
+Detaliile pentru a configura MySQL în Cloud9 sunt dispoibile [aici](../development-environment/mysql.md).
 
 În continuare adaugă baza de date cu numele **profile** executand comanda:
 

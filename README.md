@@ -2,10 +2,10 @@
 
 ## Configuring the development environment
 
-1. [Local](configurare-mediu-de-lucru/local.md)
-2. [Cloud9 in AWS](configurare-mediu-de-lucru/c9.md)
-3. [MySQL](configurare-mediu-de-lucru/mysql.md)
-4. [Working with git](configurare-mediu-de-lucru/git.md)
+1. [Local](development-environment/local.md)
+2. [Cloud9 in AWS](development-environment/c9.md)
+3. [MySQL](development-environment/mysql.md)
+4. [Working with git](development-environment/git.md)
 
 ## Developeing a fontend - backend web application
 
