@@ -11,7 +11,7 @@
 
 ## Tutorial frontend-backend
 
-* [Application architecture](tutorial-frontend-backend/tutorial-arhitectura.md)
+* [Application architecture](tutorial-frontend-backend/tutorial-architecture.md)
 * [RESTful API](tutorial-frontend-backend/tutorial-rest-api.md)
 * [HTML and JavaScript interface](tutorial-frontend-backend/tutorial-frontend.md)
 

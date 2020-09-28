@@ -11,7 +11,7 @@
 
 The tutorial is organized in 3 parts:
 
-1. [Application architecture](tutorial-frontend-backend/tutorial-arhitectura.md)
+1. [Application architecture](tutorial-frontend-backend/tutorial-architecture.md)
 2. [Building the RESTful API using ExpressJS](tutorial-frontend-backend/tutorial-rest-api.md)
 3. [Building the interface using HTML and JavaScript](tutorial-frontend-backend/tutorial-frontend.md)
 
