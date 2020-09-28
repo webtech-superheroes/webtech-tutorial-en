@@ -1,4 +1,4 @@
-# Construirea interfeței folosind HTML și JavaScript
+# HTML and JavaScript interface
 
 În prima parte am construit un server web capabil să servească fișiere statice și să expună date pentru a realiza operațiile de creare, citire, actualizare și ștergere \(CRUD\). În a doua parte vom dezvolta o interfață minimalistă cu scopul de a exemplifica metodele de comunicare între componenta de frontend și componenta de backend.
 
@@ -80,8 +80,6 @@ Iar codul pentru a reprezenta un formular va fi acesta:
   <input type="submit" value="Save message">
   <input type="reset" value="Cancel">
 </form>
-
-    
 ```
 
 Ce am obținut din acest exercițiu este un document static, dar ne dorim să îl populăm cu date de pe server și să implementăm fiecare acțiune folosind JavaScript.
@@ -90,7 +88,7 @@ Ce am obținut din acest exercițiu este un document static, dar ne dorim să î
 
 Evenimentul declanșat atunci când pagina este încărcată `onload` va determina o cerere de tip GET care va furniza lista de mesaje pe care o vom afișa în tabel.
 
-Apăsarea butonului de ștergere pentru o înregistrare va determina o cerere de tip DELETE. 
+Apăsarea butonului de ștergere pentru o înregistrare va determina o cerere de tip DELETE.
 
 Completarea formularului și apăsarea butonului salvează va determina o cerere de tip POST dacă este vorba de adăugarea unei înregistrări noi.
 
@@ -157,7 +155,7 @@ Pentru a testa funcția o vom apela pe eveninimentul `onload`
 
 Observăm în acest exemplu câteva elemente specifice de limbaj precum modul în care se definește o funcție, modul în care se definește o variabilă de tip string și operația de concatenare.
 
-Am folosit funcția `fetch` pentru a iniția o cerere GET către backend. Imediat ce primim răspunsul de la server îl vom transforma în JSON. Apoi cu rezultatul obținut construim tabelul 
+Am folosit funcția `fetch` pentru a iniția o cerere GET către backend. Imediat ce primim răspunsul de la server îl vom transforma în JSON. Apoi cu rezultatul obținut construim tabelul
 
 Pentru că folosim metodă asincronă rezultatul returnat de apel va fi un obiect de tip `Promise`. Pe acest obiect vom transmite două funcții către cele două metode `then()` și `catch()` care vor fi apelate atunci când cererea este îndeplinită cu succes, respectiv dacă a intervenit o eroare. Detaliile privind acest mecanism sunt descrise aici: [https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global\_Objects/Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 

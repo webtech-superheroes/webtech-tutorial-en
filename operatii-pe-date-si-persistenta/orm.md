@@ -1,4 +1,4 @@
-# ORM \(Object-relational mapping\) cu Sequelize
+# ORM \(Object-relational mapping\) with Sequelize
 
 * permite transpunerea bazei de date in cod prin realizarea de modele asociate fiecarui tabel
 * sunt definite relatiile intre tabele

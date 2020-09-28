@@ -1,6 +1,6 @@
-# Arhitectura aplicației
+# Application architecture
 
-Aplicația pe care o implementăm pentru a demostra modelul Single Page Application 
+Aplicația pe care o implementăm pentru a demostra modelul Single Page Application
 
 Înainte de a trece la implementare să ne luăm câteva momente pentru a reflecta la modul în care un utilizator va interacționa cu această pagină web și care este parcursul pe care în vor avea datele în arhitectura aplicației noastre.
 

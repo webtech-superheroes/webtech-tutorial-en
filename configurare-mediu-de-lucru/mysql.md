@@ -1,4 +1,4 @@
-# Configurarea serviciului mysql în Cloud9
+# MySQL
 
 Serviciul `mysql` este cel care ne permite gestionarea bazei de date în care aplicația va stoca informații.
 

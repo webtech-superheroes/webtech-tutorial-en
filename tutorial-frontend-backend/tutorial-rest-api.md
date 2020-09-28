@@ -1,4 +1,4 @@
-# Construirea API-ului RESTful
+# RESTful API
 
 Un API RESTful reprezintă o metodă de a expune date și de a realiza operații pe acele date prin intermediul protocolului HTTP.
 

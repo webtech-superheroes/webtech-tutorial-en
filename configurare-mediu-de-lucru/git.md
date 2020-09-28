@@ -1,4 +1,4 @@
-# Lucru cu git
+# Working with GIT
 
 Git este un sistem de versionare a codului extrem de util pentru lucru în echipă. Îl poți folosi local pentru a versiona fișiere text sau prin unul dintre multitudinea de platforme online precum GitHub, GitLab, BitBucket, etc.
 
