@@ -1,37 +1,35 @@
 # RESTful API
 
-Un API RESTful reprezintă o metodă de a expune date și de a realiza operații pe acele date prin intermediul protocolului HTTP.
+A RESTful API is a method to expose data and perform CRUD operations on top of the HTTP protocol.
 
-În acest exercițiu construim un server web cu ajutorul NodeJS și al framework-ului ExpressJS. Datele sunt stocate într-o bază de date relațională MySQL. Accesul la date se face prin Sequelize.
+In this exercice we will be creating a web server using NodeJS and the ExpressJS framework. Data will be stored in MySQL and we will be using Sequelize to model the tables and relations.
 
-## 1. Cum inițializez o aplicație NodeJS?
+## 1. How to initialize a NodeJS app?
 
-Pentru a inițializa o aplicație NodeJS execut următoarea comandă din terminal si completez detaliile pentru proiect
+In order to initialize a node app open a directory where you want to create the app and  execute the following command in the terminal
 
 ```bash
 npm init
 ```
 
-Urmărește instrucțiunile de pe ecran și completez următoarele detalii:
+You will be prompted to fill in the following details:
 
-* Name - numele proiectului
-* Version - versiunea proiectului \(default\) - trec peste apasand ENTER
-* Description - o descriere succintă
-* Entry point - fișierul care pornește aplicația: server.js
-* Test command - trec peste apasand ENTER
-* Git repository - trec peste apasand ENTER
-* Keywords - trec peste apasand ENTER
-* Author - trec peste apasand ENTER
-* License - trec peste apasand ENTER
+* Name
+* Version
+* Description
+* Entry point
+* Test command
+* Git repository
+* Keywords
+* Author
+* License
 
-După ce ai completat toate informațiile pe ecran va aparea un mesaj de confirmare:
+Before completing this step you need to confirm the data is correct:
 
-![npm init](../.gitbook/assets/00101-npm-init.png)
+If everything went well a _**pagckage.json**_ file is generated
 
-Confrim dacă datele introduse sunt corecte. Dacă am executat comanda cu succes voi obține un fișier _**pagckage.json**_ cu datele introduse.
-
-* [ ] TODO: verifică existența fișierului package.json
-* [ ] TODO: crează un fișier _**server.js**_
+* [ ] TODO: check if the package.json exists
+* [ ] TODO: create a new file called _**server.js**_
 
 ## 2. Cum construiesc un server HTTP folosind ExpressJS?
 
