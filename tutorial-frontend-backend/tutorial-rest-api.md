@@ -33,41 +33,39 @@ If everything went well a _**pagckage.json**_ file is generated
 
 ## 2. Cum construiesc un server HTTP folosind ExpressJS?
 
-ExpressJS este un framework minimalist pentru dezvoltarea de aplicații web, mobile sau servicii web REST \(API\).
+ExpressJS is a lightweight, but powerful framework for building web applications or web services.
 
-Pentru descărca modulul și a include express în lista de dependințe execută comanda
+To include this dependency in your project run the following npm command
 
 ```bash
 npm install express --save
 ```
 
-Editează fișierul _**server.js**_ și adaugă modulul express
+Write the code in the _**server.js**_ file
 
 ```javascript
 const express = require('express')
 ```
 
-Pentru a folosi Express definește o constată `app` astfel
+Next create a constant called`app`
 
 ```javascript
 const app = express()
 ```
 
-Pentru a servi fișiere statice precum imagini, documente html, css sau javascript folosește `express.static`
+Use the static files middleware to serve your webpage assets `express.static`
 
 ```javascript
 app.use('/', express.static('frontend'))
 ```
 
-Primul parametru reprezintă calea din adresa url. Al doilea parametru este un apel al metodei `static` care primește calea către directorul în care sunt stocate fișierele statice.
+The first parameter is the path where you want the files to be served. The second parameter is the middleware configured with the directory where the files are located.
 
-În final voi specifica portul pe care serverul va asculta cererile HTTP.
+Configure the server to listen to 8080 port for HTTP.
 
 ```javascript
 app.listen(8080)
 ```
-
-Pentru a rula programul deschid fisierul `server.js` și apăs butonul RUN
 
 * [ ] TODO: crează un director denumit `frontend`
 * [ ] TODO: adaugă în directorul creat un fișier `index.html`
@@ -75,16 +73,16 @@ Pentru a rula programul deschid fisierul `server.js` și apăs butonul RUN
 
 ## 3. Cum instalez MySQL și cum creez baza de date?
 
-Detaliile pentru a configura MySQL în Cloud9 sunt dispoibile [aici](../development-environment/mysql.md).
+If you havent done this allready, follow the tutorial published [here](../development-environment/mysql.md).
 
-În continuare adaugă baza de date cu numele **profile** executand comanda:
+Login into the console and create a database called **profile**:
 
 ```sql
 create database profile;
 ```
 
-* [ ] TODO: verifică dacă baza de date a fost creată cu succes executând `show databases;`
-* [ ] TODO: părăsește consola mysql executând comanda `exit`
+* [ ] TODO: check if the database was created by executing `show databases;`
+* [ ] TODO: exit the mysql console by typing `exit` and pressing enter
 
 ## 4. Cum mă conectez la baza de date din NodeJS folosind Sequelize?
 
