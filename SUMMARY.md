@@ -6,7 +6,7 @@
 
 * [Local](development-environment/local.md)
 * [Cloud9](development-environment/c9.md)
-* [MySQL](development-environment/mysql.md)
+* [MySQL \(cloud\)](development-environment/mysql.md)
 * [Working with GIT](development-environment/git.md)
 
 ## Tutorial frontend-backend

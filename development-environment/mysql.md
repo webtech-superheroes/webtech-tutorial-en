@@ -1,8 +1,8 @@
-# MySQL
+# MySQL \(cloud\)
 
-Serviciul `mysql` este cel care ne permite gestionarea bazei de date în care aplicația va stoca informații.
+We are using `mysql` as a persistence layer for our application. In short this is where the data is store.
 
-Pentru a testa că acest serviciu este pornit în terminal executăm următoarea comandă:
+Make sure that the service is up and running by typing this command in the console:
 
 ```bash
 sudo service mysql status
@@ -10,49 +10,45 @@ sudo service mysql status
 
 ![mysql status](../.gitbook/assets/001-mysql-status.png)
 
-## Configurare utilizator nou
+## Configuring a new user
 
-Ne vom conecta la baza de date folosind userul `root` și apoi vom genera credențialele de autentificare pentru aplicația noastră.
+Connect to the database service using the `root` user and add new credentials for the application
 
 ```bash
 sudo mysql -u root
 ```
 
-Adăugăm un nou utilizator. În exemplul de mai jos puteți inlocui `username` și `password` cu numele respectiv parola dorită.
+In the example below replace `username` and `password` with the desired credentials. Make sure you will remember them.
 
 ```bash
 CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
 ```
 
-Apoi îi acordăm privilegiile necesare
+Then grant the required privileges to access all the databases.
 
 ```bash
 GRANT ALL PRIVILEGES ON *.* TO 'username'@'localhost' WITH GRANT OPTION;
 ```
 
-În final pentru a îeși din consola mysql tastează comanda `exit`.
+In order to exit the mysql console type `exit` and press enter.
 
-## Conectare server mysql
+## Connecting to the mysql server 
 
-Acum ne vom conecta la serverul de baze de date folosind credențialele pe care tocmai le-am creat.
+Run the following command with the newly created credentials.
 
 ```bash
 mysql -u username -p
 ```
 
-Parola o vom introduce după ce executăm comanda de mai sus. Caracterele nu vor fi afișate. După introducerea parolei apăsăm tasta enter.
+You will be prompted to type the password, but no characters will be displayed. Press enter to connect
 
-## Creare bază de date
-
-Din consola MySQL voi rula comenzi SQL. Sfârșitul unei comenzi este marcat de **caracterul ;**
-
-De exemplu, pentru a crea o nouă baza de date executăm comanda `CREATE DATABASE`
+## Creating a new database
 
 ```text
 CREATE DATABASE database_name;
 ```
 
-Pentru a lista bazele de date disponibile executam următoarea comandă:
+To list all the databases type the following command:
 
 ```text
 SHOW DATABASES;
@@ -60,7 +56,7 @@ SHOW DATABASES;
 
 ![002-show-databases](../.gitbook/assets/002-create-database.png)
 
-## Revenire în consola linux
+## Getting back to the linux console
 
-Pentru a părăsi utilitarul mysql, tastează comanda `exit`
+Type `exit`
 
