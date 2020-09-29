@@ -7,7 +7,7 @@
 3. [MySQL](development-environment/mysql.md)
 4. [Working with git](development-environment/git.md)
 
-## Developeing a fontend - backend web application
+## Developeing a frontend - backend web application
 
 The tutorial is organized in 3 parts:
 
