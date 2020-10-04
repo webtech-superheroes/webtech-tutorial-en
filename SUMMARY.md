@@ -15,6 +15,10 @@
 * [RESTful API](tutorial-frontend-backend/tutorial-rest-api.md)
 * [HTML and JavaScript interface](tutorial-frontend-backend/tutorial-frontend.md)
 
+## PROGRESSIVE WEB APPS \(PWA\)
+
+* [WebTech Hub app](progressive-web-apps-pwa/webtech-hub-app.md)
+
 ## Data operations and persistence <a id="operatii-pe-date-si-persistenta"></a>
 
 * [ORM \(Object-relational mapping\) with Sequelize](operatii-pe-date-si-persistenta/orm.md)
