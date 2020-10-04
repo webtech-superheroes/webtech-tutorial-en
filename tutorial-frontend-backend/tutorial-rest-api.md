@@ -242,7 +242,7 @@ app.get('/messages/:id', (request, response) => {
 })
 ```
 
-* [ ] TODO: testează endpoint-urile create folosind Postman
+* [ ] TODO: test the endpoint in POSTMAN
 
 ## 9. How to update a resource using PUT?
 
@@ -276,7 +276,7 @@ app.put('/messages/:id', (request, response) => {
 })
 ```
 
-* [ ] test the endpoint in POSTMAN
+* [ ] TODO: test the endpoint in POSTMAN
 
 ![postman put](../.gitbook/assets/00901-postman-put.png)
 
