@@ -312,6 +312,226 @@ app.delete('/messages/:id', (request, response) => {
 
 * [ ] TODO: test the endpoint in POSTMAN
 
+## 11. Putting it all together \(server.js\)
+
+```javascript
+const express = require('express')
+const Sequelize = require('sequelize')
+
+const sequelize = new Sequelize('profile', 'root', '', {
+    dialect: "mysql",
+    host: "localhost"
+})
+
+sequelize.authenticate().then(() => {
+    console.log("Connected to database")
+}).catch((err) => {
+    console.log(err)
+    console.log("Unable to connect to database")
+})
+
+const Messages = sequelize.define('messages', {
+    subject: Sequelize.STRING,
+    name: Sequelize.STRING,
+    message: Sequelize.TEXT
+})
+
+const app = express()
+app.use('/', express.static('frontend'))
+
+app.use(express.json())
+app.use(express.urlencoded())
+
+app.get('/createdb', (request, response) => {
+    sequelize.sync({force:true}).then(() => {
+        response.status(200).send('tables created')
+    }).catch((err) => {
+        console.log(err)
+        response.status(200).send('could not create tables')
+    })
+})
+
+//definire endpoint POST /messages
+app.post('/messages', (request, response) => {
+    Messages.create(request.body).then((result) => {
+        response.status(201).json(result)
+    }).catch((err) => {
+        response.status(500).send("resource not created")
+    })
+})
+
+
+app.get('/messages', (request, response) => {
+    Messages.findAll().then((results) => {
+        response.status(200).json(results)
+    })
+})
+
+app.get('/messages/:id', (request, response) => {
+    Messages.findByPk(request.params.id).then((result) => {
+        if(result) {
+            response.status(200).json(result)
+        } else {
+            response.status(404).send('resource not found')
+        }
+    }).catch((err) => {
+        console.log(err)
+        response.status(500).send('database error')
+    })
+})
+
+app.put('/messages/:id', (request, response) => {
+    Messages.findByPk(request.params.id).then((message) => {
+        if(message) {
+            message.update(request.body).then((result) => {
+                response.status(201).json(result)
+            }).catch((err) => {
+                console.log(err)
+                response.status(500).send('database error')
+            })
+        } else {
+            response.status(404).send('resource not found')
+        }
+    }).catch((err) => {
+        console.log(err)
+        response.status(500).send('database error')
+    })
+})
+
+
+app.delete('/messages/:id', (request, response) => {
+    Messages.findByPk(request.params.id).then((message) => {
+        if(message) {
+            message.destroy().then((result) => {
+                response.status(204).send()
+            }).catch((err) => {
+                console.log(err)
+                response.status(500).send('database error')
+            })
+        } else {
+            response.status(404).send('resource not found')
+        }
+    }).catch((err) => {
+        console.log(err)
+        response.status(500).send('database error')
+    })
+})
+
+
+app.listen(8080)
+```
+
+## 12. Using async/await keywords to simplify the code
+
+```javascript
+const express = require('express')
+const Sequelize = require('sequelize')
+
+const sequelize = new Sequelize('profile', 'root', '', {
+    dialect: "mysql",
+    host: "localhost"
+})
+
+sequelize.authenticate().then(() => {
+    console.log("Connected to database")
+}).catch((err) => {
+    console.log(err)
+    console.log("Unable to connect to database")
+})
+
+const Messages = sequelize.define('messages', {
+    subject: Sequelize.STRING,
+    name: Sequelize.STRING,
+    message: Sequelize.TEXT
+})
+
+const app = express()
+app.use('/', express.static('frontend'))
+
+app.use(express.json())
+app.use(express.urlencoded())
+
+app.get('/createdb', async (request, response) => {
+    try {
+        await sequelize.sync({force:true})
+        response.status(200).send('tables created')
+    } catch(err) {
+        console.log(err)
+        response.status(200).send('could not create tables')
+    }
+})
+
+//definire endpoint POST /messages
+app.post('/messages', async (request, response) => {
+    try {
+        let result = await Messages.create(request.body)
+        response.status(201).json(result)
+    } catch(err) {
+        console.log(err)
+        response.status(500).send("resource not created")
+    }
+})
+
+
+app.get('/messages', async (request, response) => {
+    try {
+        let results = await Messages.findAll()
+        response.status(201).json(results)
+    } catch(err) {
+        console.log(err)
+        response.status(500).send("server error")
+    }
+})
+
+app.get('/messages/:id', async (request, response) => {
+    try {
+        let result = await Messages.findByPk(request.params.id)
+        if(result) {
+            response.status(200).json(result)
+        } else {
+            response.status(404).send('resource not found')
+        }
+    } catch(err) {
+        console.log(err)
+        response.status(500).send('database error')
+    }
+})
+
+app.put('/messages/:id', async (request, response) => {
+    try {
+        let message = await Messages.findByPk(request.params.id)
+        if(message) {
+            let result = await message.update(request.body)
+            response.status(201).json(result)
+        } else {
+            response.status(404).send('resource not found')
+        }
+    } catch(err) {
+        console.log(err)
+        response.status(500).send('database error')
+    }
+})
+
+
+app.delete('/messages/:id', async (request, response) => {
+    try {
+        let message = await Messages.findByPk(request.params.id)
+        if(message) {
+            await message.destroy()
+            response.status(204).send()
+        } else {
+            response.status(404).send('resource not found')
+        }
+    } catch(err) {
+        console.log(err)
+        response.status(500).send('database error')
+    }
+})
+
+
+app.listen(8080)
+```
+
 ## Next steps...
 
 Get more in depth knowledge by reading this articles
