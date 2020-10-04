@@ -246,15 +246,15 @@ app.get('/messages/:id', (request, response) => {
 
 ## 9. How to update a resource using PUT?
 
-Actualizarea unei resurse se realizează prin intermediul metodei PUT
+Considering the following endpoint
 
 ```text
 PUT /messages/1
 ```
 
-În primul pas se interoghează baza de date. Dacă resursa nu există serverul va returna statusul 404 și mesajul „not found„.
+First, the resource is retrieved by ID. If the resource was not found the server's response is **404 NOT FOUND**
 
-Dacă resursa a fost găsită o actualizez apelând metoda `update()` cu obiectul trimis în body-ul cererii HTTP.
+If the resource was fount we call the `update()` method with the payload sent by the client in the body.
 
 ```javascript
 app.put('/messages/:id', (request, response) => {
@@ -276,19 +276,19 @@ app.put('/messages/:id', (request, response) => {
 })
 ```
 
-Pașii pentru a testa metoda PUT sunt aceiași ca pentru metoda POST.
+* [ ] test the endpoint in POSTMAN
 
 ![postman put](../.gitbook/assets/00901-postman-put.png)
 
-## 10. Cum șterg o înregistrare folosind metoda DELETE?
+## 10. How to remove resources using delete DELETE?
 
-Ultima metodă permite ștergerea unei resurse
+Considering the following endpoint
 
 ```text
 DELETE /messages/1
 ```
 
-Dacă resursa este găsită după ID, apelez metoda `destroy`,iar sequelize va transmite către baza de date instructiunea sql ``DELETE FROM `messages` WHERE id = 1`` și va returna un obiect de tip `Promise`. În final serverul web va raspunde cu statusul **204 NO CONTENT** semnalând că cererea a fost îndeplinită cu succes.
+First, the resources is retrieved by id. If the resource was found we are calling the destroy method to send the delete instruction. This will return a Promise that needs to be treated accordingly. If the delete was successful the server's response is 204 NO CONTENT
 
 ```javascript
 app.delete('/messages/:id', (request, response) => {
@@ -310,16 +310,12 @@ app.delete('/messages/:id', (request, response) => {
 })
 ```
 
-* [ ] TODO: testează enpoint-ul în Postman folosind metoda DELETE
+* [ ] TODO: test the endpoint in POSTMAN
 
 ## Next steps...
 
-Dacă ai reușit să parcurgi tutorialul până aici, în primul rând felicitări pentru efort!
-
-Iată câteva resurse care te vor ajuta să aprofundezi dezvoltarea de servicii web REST:
+Get more in depth knowledge by reading this articles
 
 * [https://www.restapitutorial.com/](https://www.restapitutorial.com/)
 * [https://medium.com/pixelpoint/oh-man-look-at-your-api-22f330ab80d5](https://medium.com/pixelpoint/oh-man-look-at-your-api-22f330ab80d5)
-* [https://www.toptal.com/laravel/restful-laravel-api-tutorial](https://www.toptal.com/laravel/restful-laravel-api-tutorial)
-* [https://www.codementor.io/sagaragarwal94/building-a-basic-restful-api-in-python-58k02xsiq](https://www.codementor.io/sagaragarwal94/building-a-basic-restful-api-in-python-58k02xsiq)
 
