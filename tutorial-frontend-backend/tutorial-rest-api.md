@@ -67,13 +67,13 @@ Configure the server to listen to 8080 port for HTTP.
 app.listen(8080)
 ```
 
-* [ ] TODO: crează un director denumit `frontend`
-* [ ] TODO: adaugă în directorul creat un fișier `index.html`
-* [ ] TODO: deschide în browser aplicația accesând adresa URL \([http://ip:8080](http://ip:8080)\)
+* [ ] TODO: create a directory called `frontend`
+* [ ] TODO: add a new file called `index.html`
+* [ ] TODO: open the app in the browser \([http://localhost:8080](http://ip:8080)\) - make sure to replace localhost with your IP if you work in the cloud
 
 ## 3. How to install MySQL and create the database?
 
-If you havent done this allready, follow the tutorial published [here](../development-environment/mysql.md).
+If you haven't done this already, follow the tutorial published [here](../development-environment/mysql.md).
 
 Login into the console and create a database called **profile**:
 
@@ -82,7 +82,7 @@ create database profile;
 ```
 
 * [ ] TODO: check if the database was created by executing `show databases;`
-* [ ] TODO: exit the console by typing `exit` and pressing enter
+* [ ] TODO: exit the console by typing `exit`and pressing enter
 
 ## 4. How to connect your database from NodeJS using Sequelize?
 
