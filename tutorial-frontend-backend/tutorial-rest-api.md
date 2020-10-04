@@ -84,11 +84,11 @@ create database profile;
 * [ ] TODO: check if the database was created by executing `show databases;`
 * [ ] TODO: exit the console by typing `exit` and pressing enter
 
-## 4. Cum mă conectez la baza de date din NodeJS folosind Sequelize?
+## 4. How to connect your database from NodeJS using Sequelize?
 
-Sequelize este o bibliotecă orientată obiect de tip ORM \(object-relational mapping\). Permite realizarea unei reperezentări a tabelelor din baza de date prin modele și relații între modele. Un model este un obiect ce permite operațiile standard pe baza de date \(Create, Read, Update, Delete\). Documentația oficială este accesibilă aici: [http://docs.sequelizejs.com/](http://docs.sequelizejs.com/)
+Sequelize is an object oriented library that provides a high level mapping between the database and your code. In practice we call this pattern object-relational mapping \(ORM\). It allows us to represent tables from the database by creating models and relationships. On each model basic CRUD \(Create, Read, Update, Delete\) operations are exposed. 
 
-Pentru a folosi Sequelize în proiect sunt necesare pachetele **sequelize** și **mysql2** pe care le vom instala prin `npm`
+Sequelize is a wrapper on multiple database drivers. In our example we will use **mysql2.** Both the library and the drivers will be installed using npm.
 
 ```bash
 npm install --save sequelize
@@ -98,7 +98,7 @@ npm install --save sequelize
 npm install --save mysql2
 ```
 
-Următorul pas presupune includerea pachetului în fișierul server.js și instanțierea unui obiect `sequelize`
+Next edit the server.js file and create an instance of the Sequelize class
 
 ```javascript
 const Sequelize = require('sequelize')
@@ -109,28 +109,29 @@ const sequelize = new Sequelize('profile', 'root', '', {
 })
 ```
 
-Fac distincție între obiectul `sequelize` și clasa `Sequelize` scrisă cu literă mare. În contstructorul clasei primul parametru este numele bazei de date, al doilea prametru este utilizatorul și al treilea este parola. Ultimul parametru este un obiect ce descrie date despre tipul de bază de date folosit și adresa serverului.
+Notice the difference between `sequelize` as an object and `Sequelize` as a class. 
 
-Pentru a realiza conexiunea la baza de date utilizez metoda **authenticate\(\)**
+The first parameter of the constructor is the database name, the second parameter is the username and the third is the passwor. Further options are passed as an object in the fourth parameter.
 
-Metoda returnează un obiect de tip `Promise` pentru care trebuie să specific funcțiile pe care să le apeleze atunct când conexiunea se realizează cu succes, respectiv întâmpin o eroare.
+In order to perform the database connection we call the  **authenticate\(\)** method.
+
+As many Sequelize methods, the authentification will be asyncronus, thus it will return a promise.  `Promise`. When the promise is fulfilled the function passed as a parameterh on the **then\(\)** method is called. If the promise gets rejected the function on the **catch\(\)** method will be called.
 
 ```javascript
 sequelize.authenticate().then(() => {
     console.log("Connected to database")
-}).catch(() => {
+}).catch((err) => {
+    console.log(err)
     console.log("Unable to connect to database")
 })
 ```
 
-* [ ] TODO: testează conexiunea rulând `server.js`
-* [ ] TODO: verifică în conoslă dacă apare mesajul **Conected to database**
+* [ ] TODO: run `node server.js`
+* [ ] TODO: check the console for the message: **Conected to database**
 
-## 5. Cum definesc modele pentru tabele folosind Sequelize?
+## 5. How to define models for my messages table?
 
-Un model este o reprezentare a unui tabel în codul sursă al aplicației. Sequelize permite definirea de modele folosind funcția _**define\(\)**_
-
-Primul parametrul al funcției este numele tabelului. O convenție presupusă de lucru cu Sequelize este că numele tabelului va fi definit în limba engleză la plural. Al doilea parametru este un obiect care descrie structura tabelului prin perechi cheie:valoare, unde cheia este numele coloanei și valoarea este tipul de date.
+The fist parameter is the name of the table. As a convention is preferred to define the tables using english language and use the plural version. The second parameter is an object that describes the structure of the table as key value pairs.
 
 ```javascript
 const Messages = sequelize.define('messages', {
@@ -140,19 +141,17 @@ const Messages = sequelize.define('messages', {
 })
 ```
 
-Mai multe detalii despre definirea de modele - [http://docs.sequelizejs.com/manual/tutorial/models-definition.html](http://docs.sequelizejs.com/manual/tutorial/models-definition.html)
+Extended documentation is here - [http://docs.sequelizejs.com/manual/tutorial/models-definition.html](http://docs.sequelizejs.com/manual/tutorial/models-definition.html)
 
-Lista cu tipurile de date suportate de Sequelize - [http://docs.sequelizejs.com/manual/tutorial/models-definition.html\#data-types](http://docs.sequelizejs.com/manual/tutorial/models-definition.html#data-types)
+Supported data type - [http://docs.sequelizejs.com/manual/tutorial/models-definition.html\#data-types](http://docs.sequelizejs.com/manual/tutorial/models-definition.html#data-types)
 
-Pentru a modela o aplicație este necesar să pornești de la domeniul pe care îl adresează, să identifici entități și relații între entități, să stabilești care sunt proprietățile lor și să identifici tipurile de date corespunzătoare. Este o activitate ce se desfășoară de obicei iterativ și incremenental pe parcursul dezvoltării aplicației. Așa că Sequelize propune un mecanism automat de sincronizare a bazei de date care este descris în pasul următor.
+## 6. How to create the tables in the database?
 
-## 6. Cum creez tabelele în baza de date folosind mecanismul de sincronizare din Sequelize?
+Using _**sync\(\)**_ all the models will be created in your database
 
-Sequelize permite sincronizarea automată a modelelor cu baza de date prin intermediul funcției _**sync\(\)**_
+Note that by adding `{force: true}` existent tables will be recreated from scratch
 
-Adădugând parametrul `{force: true}` tabelele existente vor fi șterse și vor fi create confrom definiției din model.
-
-Pentru a defini tabelel în baza de date expun enpoint-ul GET /createdb
+To create the tabeles we are exposing a GET /createdb endpoint
 
 ```javascript
 app.get('/createdb', (request, response) => {
@@ -165,16 +164,16 @@ app.get('/createdb', (request, response) => {
 })
 ```
 
-* [ ] TODO: accesează din browser endpoint-ul /createdb
-* [ ] TODO: testează dacă tabelul a fost creat executând în consola mysql comenzile `use profile` pentru a selecta baza de date și `show tables;` pentru a afișa lista de tabele din baza de date
+* [ ] TODO: open the brouser and navigate to http://localhost:8080/createdb
+* [ ] TODO: login to the mysql console type `use profile` and `show tables;` to check if the tables were created
 
-## Metode HTTP
+## HTTP Methods
 
-În continuare vom dezvolta metode HTTP pentru fiecare operație Create, Read, Update, Delete
+Now that we have the model let's implement the Create, Read, Update and Delete operations.
 
 ![metode http](../.gitbook/assets/00002-arhitectura-metode-http.jpg)
 
-## 7. Cum creez o nouă înregistrare într-un tabel folosind metoda POST?
+## 7. How to create resources using POST?
 
 Pentru a permite crearea de înregistrări expun o metodă de tip POST.
 
