@@ -111,11 +111,11 @@ const sequelize = new Sequelize('profile', 'root', '', {
 
 Notice the difference between `sequelize` as an object and `Sequelize` as a class. 
 
-The first parameter of the constructor is the database name, the second parameter is the username and the third is the passwor. Further options are passed as an object in the fourth parameter.
+The first parameter of the constructor is the database name, the second parameter is the username and the third is the password. Further options are passed as an object in the fourth parameter.
 
 In order to perform the database connection we call the  **authenticate\(\)** method.
 
-As many Sequelize methods, the authentification will be asyncronus, thus it will return a promise.  `Promise`. When the promise is fulfilled the function passed as a parameterh on the **then\(\)** method is called. If the promise gets rejected the function on the **catch\(\)** method will be called.
+As many Sequelize methods, the authentication will be asynchronous, thus it will return a promise.  `Promise`. When the promise is fulfilled the function passed as a parameter on the **then\(\)** method is called. If the promise gets rejected the function on the **catch\(\)** method will be called.
 
 ```javascript
 sequelize.authenticate().then(() => {
@@ -209,7 +209,7 @@ app.post('/messages', (request, response) => {
 
 ## 8. How to expose data from a table using GET?
 
-Pentru a lista datele dintr-un tabel vom expune două enpoint-uri. Primul care returnează toată lista de mesaje și al doilea care returnează un mesaj după un ID specific.
+Considering the following endpoints. The first one will retrieve all the entries in the table. The second will retrieved one entry identified by the ID 1.
 
 ```text
 GET /messages
