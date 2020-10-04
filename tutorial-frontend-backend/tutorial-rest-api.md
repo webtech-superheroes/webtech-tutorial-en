@@ -175,15 +175,13 @@ Now that we have the model let's implement the Create, Read, Update and Delete o
 
 ## 7. How to create resources using POST?
 
-Pentru a permite crearea de înregistrări expun o metodă de tip POST.
-
-Fiecare endpoint din API-ul REST este definită de metoda HTTP și numele resursei la care se referă.
+We consider the following endpoint
 
 ```text
 POST /messages
 ```
 
-Clientul va trimite datele prin cererea HTTP în format `json` sau `urlencoded`. Pentru a interpreta aceste date voi adăuga două bodyParser. Apoi definesc endpoint-ul apelând functia `app.post`.
+The client will perform a HTTP request containing data in `json` or `urlencoded`. To parse the data we need to add two middleware functions. The endpoint is defined using app.post
 
 ```javascript
 app.use(express.json())
@@ -199,25 +197,17 @@ app.post('/messages', (request, response) => {
 })
 ```
 
-Conținutul trimis în body va fi accesibil pe proprietatea `request.body` ce va fi pasat ca parametru pentru modelul Sequelize în metoda create\(\).
-
-Metoda **create** Sequelize va genera automat instrucțiunea ``INSERT INTO messages (`subject`, `name`, `message`) VALUES ('test','test','test')``.
-
-Dacă comanda va fi executată cu succes rezultatul va fi returnat prin functia callback definită pe metoda `then(callback)`
-
-Dacă aplicația va întâmpina o eroare la scriere în baza de date va apela functia callback definită pe metoda `catch(callback)`
-
-Pentru a testa enpoint-ul creat folosim Postman.
+ **create** ---&gt; ``INSERT INTO messages (`subject`, `name`, `message`) VALUES ('test','test','test')``.
 
 ![postman post method](../.gitbook/assets/00701-postman-post.png)
 
-1. Selectează metoda POST
-2. Adaugă adresa URL a resursei
-3. În tabul body alege optiunea raw și adaugă un obiect json care descrie resursa creată
-4. Selectează tipul de continut application/json
-5. Trimite cererea HTTP apăsând butonul Send
+1. Choose POST
+2. Type the URL of the resource
+3. Choose raw a body type
+4. Choose application/json content type
+5. Press Send
 
-## 8. Cum expun datele dintr-un tabel folosind metoda GET?
+## 8. How to expose data from a table using GET?
 
 Pentru a lista datele dintr-un tabel vom expune două enpoint-uri. Primul care returnează toată lista de mesaje și al doilea care returnează un mesaj după un ID specific.
 
@@ -229,7 +219,7 @@ GET /messages
 GET /messages/1
 ```
 
-Pentru interogarea tabelului modelul sequelize expune metode precum `findAll`, `findByPk`, `findOne`. Functia va returna un obiect de tip `Promise` ce va fi executat imediat ce datele sunt primite de la serverul de baze de date. Mai multe detalii despre interogari aici: [http://docs.sequelizejs.com/manual/tutorial/querying.html](http://docs.sequelizejs.com/manual/tutorial/querying.html)
+Details on data queries: [http://docs.sequelizejs.com/manual/tutorial/querying.html](http://docs.sequelizejs.com/manual/tutorial/querying.html)
 
 ```javascript
 app.get('/messages', (request, response) => {
@@ -254,7 +244,7 @@ app.get('/messages/:id', (request, response) => {
 
 * [ ] TODO: testează endpoint-urile create folosind Postman
 
-## 9. Cum actualizez o înregistrare folosind metoda PUT?
+## 9. How to update a resource using PUT?
 
 Actualizarea unei resurse se realizează prin intermediul metodei PUT
 
