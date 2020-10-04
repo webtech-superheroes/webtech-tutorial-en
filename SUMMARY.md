@@ -17,6 +17,7 @@
 
 ## PROGRESSIVE WEB APPS \(PWA\)
 
+* [Resources](progressive-web-apps-pwa/resources.md)
 * [WebTech Hub app](progressive-web-apps-pwa/webtech-hub-app.md)
 
 ## Data operations and persistence <a id="operatii-pe-date-si-persistenta"></a>
