@@ -129,11 +129,11 @@ sequelize.authenticate().then(() => {
 ```
 
 * [ ] TODO: run `node server.js`
-* [ ] TODO: check the console for the message: **Conected to database**
+* [ ] TODO: check the console for the message: **Connected to database**
 
 ## 5. How to define models for my messages table?
 
-The fist parameter is the name of the table. As a convention is preferred to define the tables using english language and use the plural version. The second parameter is an object that describes the structure of the table as key value pairs.
+The fist parameter is the name of the table. As a convention is preferred to define the tables using English language and use the plural version. The second parameter is an object that describes the structure of the table as key value pairs.
 
 ```javascript
 const Messages = sequelize.define('messages', {
@@ -166,7 +166,7 @@ app.get('/createdb', (request, response) => {
 })
 ```
 
-* [ ] TODO: open the brouser and navigate to http://localhost:8080/createdb
+* [ ] TODO: open the browser and navigate to http://localhost:8080/createdb
 * [ ] TODO: login to the mysql console type `use profile` and `show tables;` to check if the tables were created
 
 ## HTTP Methods
