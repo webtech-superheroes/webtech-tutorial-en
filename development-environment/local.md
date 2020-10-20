@@ -11,3 +11,5 @@ In order to work on your personal computer you are required to install the follo
 
 Sticking to the default options while installing is enough to accomplish the right setup
 
+MYSQL PATH SETUP [https://dev.mysql.com/doc/mysql-windows-excerpt/5.7/en/mysql-installation-windows-path.html](https://dev.mysql.com/doc/mysql-windows-excerpt/5.7/en/mysql-installation-windows-path.html)
+
