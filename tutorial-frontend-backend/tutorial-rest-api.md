@@ -4,6 +4,8 @@ A RESTful API is a method to expose data and perform CRUD operations on top of t
 
 In this exercise we will be creating a web server using NodeJS and the ExpressJS framework. Data will be stored in MySQL and we will be using Sequelize to model the tables and relations.
 
+![](../.gitbook/assets/00001-arhitectura.jpg)
+
 ## 1. How to initialize a NodeJS app?
 
 In order to initialize a node app open a directory where you want to create the app and  execute the following command in the terminal
