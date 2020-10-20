@@ -153,7 +153,7 @@ Using _**sync\(\)**_ all the models will be created in your database
 
 Note that by adding `{force: true}` existent tables will be recreated from scratch
 
-To create the tabeles we are exposing a GET /createdb endpoint
+To create the tables we are exposing a GET /createdb endpoint
 
 ```javascript
 app.get('/createdb', (request, response) => {
