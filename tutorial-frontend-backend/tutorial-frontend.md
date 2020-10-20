@@ -2,7 +2,9 @@
 
 In the first part we've built a web server capable to serve static files and expose each CRUD \(create, read, update and delete\) operation. In this second part we will develop a minimal interface to demonstrate the communication between the frontend and the backend components.
 
-Note that frontend development is an iterative process. You usually start from some sketches and aim to get then validated with the users. Then you move into more details as you create a high fidelity design. In the end you turn the design into HTML and CSS. Design principles are not covered here since we will be focusing on the technologies and we will be using frameworks like Bootstrap or Material UI.
+Note that frontend development is an iterative process. You usually start from some sketches and aim to get then validated with the users. Then you move into more details as you create a high fidelity design. 
+
+In the end you turn the design into HTML and CSS. Design principles are not covered here since we will be focusing on the technologies and we will be using frameworks like Bootstrap or Material UI.
 
 ## HTML Document
 
