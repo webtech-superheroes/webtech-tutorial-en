@@ -19,6 +19,7 @@
 
 * [WebTech Hub app](progressive-web-apps-pwa/webtech-hub-app.md)
 * [Application architecture](progressive-web-apps-pwa/application-architecture.md)
+* [Install instructions](progressive-web-apps-pwa/install-instructions.md)
 * [Resources](progressive-web-apps-pwa/resources.md)
 
 ## Data operations and persistence <a id="operatii-pe-date-si-persistenta"></a>
