@@ -84,7 +84,7 @@ async function showMessages() {
                     <th>Actions</th>
                 </tr>`
     
-        results.data.forEach(function(element) {
+        results.forEach(function(element) {
             html += `<tr>
                         <td>${element.id}</td>
                         <td>${element.name}</td>
@@ -98,10 +98,10 @@ async function showMessages() {
         })
     
         html += `</table>`
-        document.getElementById('#table').innerHTML = html
-    }).catch(function(error) {
+        document.getElementById('content').innerHTML = html
+    } catch (error) {
         console.log(error)
-    })
+    }
 }
 ```
 
@@ -130,12 +130,12 @@ We noticed that the default behavior of a form is to submit data via the GET met
 async function saveMessage(event) {
     event.preventDefault()
 
-    let id = event.target.id
+    let id = event.target.id.value
     
     let data = {
-        name: event.target.name,
-        subject: event.target.subject,
-        message: event.target.message
+        name: event.target.name.value,
+        subject: event.target.subject.value,
+        message: event.target.message.value
     }
     
     let url = ''
@@ -154,19 +154,17 @@ async function saveMessage(event) {
         let result = await fetch(url, {
             method: method, 
             headers: {
-              'Content-Type': 'application/json'
+            'Content-Type': 'application/json'
             },
             body: JSON.stringify(data)
-         }).then(response => response.json())
-         
-         showMessages()
-     } catch(err) {
-         alert('unable to save message')
-     }
-     
+        }).then(response => response.json())
+        
+        showMessages()
+    } catch(err) {
+        alert('unable to save message')
+    }
+    
 }
-
-
 ```
 
 ## Delete method
